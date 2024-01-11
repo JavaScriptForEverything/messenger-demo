@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- <script src="js/tailwind_cdn.js"></script> -->
+	<style>
+
+	</style>
+</head>
+<body>
+
+	<form>
+		<input type="text">
+		<button type="submit">Submit</button>
+	</form>
+	<br>
+	<br>
+	<!-- <p name='paragraph'>Paragraph</p> -->
+
+
+	<script>
+		const $ = (selector) => document.querySelector( selector )
+		const input = $('input')
+		const button = $('button')
+		const p =	$('p')
+
+		const query = new URL( location.url ).searchParams.get('query')
+		input.value = query
+		p.innerHTML = query
+
+		input.addEventListener('keydown', (evt) => {
+			
+			setTimeout(() => {
+				p.innerText = evt.target.value
+
+			}, 0);
+		})
+
+		button.addEventListener('click', (evt) => {
+			evt.preventDefault()		
+			
+			location.hash = p.innerHTML 
+		})
+	</script>
+
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn install",
+    "start": "NODE_ENV=production node .",
+    "dev": "NODE_ENV=development nodemon . --ext js,pug --ignore public"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-livereload": "^0.6.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "formidable": "^3.5.1",
+    "jsonwebtoken": "^9.0.2",
+    "livereload": "^0.9.3",
+    "mongoose": "^8.0.3",
+    "pug": "^3.0.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.2",
+    "tailwindcss": "^3.4.0"
+  }
+}

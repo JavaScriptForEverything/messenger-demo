@@ -1,0 +1,50 @@
+doctype html
+html(lang="en")
+	head
+		title #{title}
+
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css")
+		script(src="/plugin/tailwind/tailwind_cdn.js") 
+
+		//- script(type="module" defer src="/js/page/home.js") 
+
+	body 
+
+		input(type='search' class='border border-slate-300 px-2 py-1.5 rounded-md')
+
+
+	script.
+		const $ = (selector) => document.querySelector( selector )
+
+
+		const input = $('input[type=search]')
+		let timer = 0
+		let isLoading = false
+		const url = 'https://jsonplaceholder.typicode.com/users/1'
+		const controller = new AbortController()
+		const { signal } = controller
+
+		input.addEventListener('input', (evt) => {
+			if( isLoading ) controller.abort()
+			//- clearTimeout( timer )
+
+			timer = setTimeout( async () => {
+				isLoading = true
+
+				try {
+					const res = await fetch(url, { signal })
+					const data = await res.json()
+					console.log(data)
+					isLoading = false
+				} catch (err) {
+					console.log(err.message)
+					isLoading = false
+				}
+			}, 1000)
+		})
+
+
+
+
+
+

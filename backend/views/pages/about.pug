@@ -1,0 +1,68 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title #{title}
+
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.css")
+		script(src="/js/tailwind_cdn.js") 
+
+		style.
+
+	body 
+		div(name='container' class='')
+			h2 Hi Sound
+
+			audio(name='song' controls src="/sound/song-Ignite.mp3") 
+
+			audio(name='notification')
+				source(src="/sound/notification.mp3" type='audio/mpeg') 
+
+		div(class='flex gap-2')
+			button(name='play' class='px-2 py-1 rounded-md border border-slate-300') Play
+			button(name='pause' class='px-2 py-1 rounded-md border border-slate-300') Pause
+			button(name='stop' class='px-2 py-1 rounded-md border border-slate-300') Stop
+
+		div(class='flex gap-2')
+			button(name='volume-incress' class='px-2 py-1 rounded-md border border-slate-300') +
+			button(name='volume-decrese' class='px-2 py-1 rounded-md border border-slate-300') -
+
+
+
+		script.
+			const $ = (selector) => document.querySelector(selector)
+
+			const audio = $('audio[name=song]')
+			const playButton = $('button[name=play]')
+			const pauseButton = $('button[name=pause]')
+			const stopButton = $('button[name=stop]')
+			const incressVolumeButton = $('button[name=volume-incress]')
+			const decressVolumeButton = $('button[name=volume-decrese]')
+			let timer = 0
+			audio.volume = 0.9
+
+			playButton.addEventListener('click', (evt) => {
+				audio.play()
+			})
+			pauseButton.addEventListener('click', (evt) => {
+				audio.pause()
+			})
+			stopButton.addEventListener('click', (evt) => {
+				audio.currentTime = 0
+			})
+
+			incressVolumeButton.addEventListener('click', (evt) => {
+				if(audio.volume * 100 >= 100) return
+				audio.volume += 0.1
+			})
+			decressVolumeButton.addEventListener('click', (evt) => {
+				if(audio.volume * 10 <= 0) return 	
+				audio.volume -= 0.1
+			})
+
+
+
+
+
+

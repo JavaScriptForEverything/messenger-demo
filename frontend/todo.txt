@@ -1,0 +1,18 @@
+
+- Send message:
+	. Send message via socket before send to database
+
+Problems:
+	. Send message sound on socket.io side throw error:
+			Error: use must interact with the webpage to autoplay sound
+				. this error occour when user refresh page and comes sound notification
+					in firefox works, but in chrome throw error, and crush app
+
+	. 2nd user gots same message multiple times
+	. Stop typing indicator as soon as message sent, don't wait for timeout
+
+	. Requires multiple time page refresh to connect with peer
+		- Try to verify by sending data in 3 way handshake
+			1. frontend to backend
+			2. backend to backend
+			3. frontend to backend
